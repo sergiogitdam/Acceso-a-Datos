@@ -29,15 +29,21 @@ public class Fichero7 {
         File archivoCatalago = new File(rutaCategoria, "catalogo.txt");
         if (!rutaCategoria.exists()) {
             System.out.println("El directorio no existe");
-            rutaCategoria.mkdir();
-            System.out.println("Directorio creado correctamente: " + rutaCategoria.getAbsolutePath());
+            if (rutaCategoria.mkdir()) {
+                System.out.println("Directorio creado correctamente: " + rutaCategoria.getAbsolutePath());
+            } else {
+                System.out.println("El directorio no se ha podido crear");
+            }
         } else {
             System.out.println("El directorio ya existe: " + rutaCategoria.getAbsolutePath());
         }
         if (!archivoCatalago.exists()) {
             System.out.println("El archivo catalogo.txt no existe");
-            archivoCatalago.createNewFile();
-            System.out.println("Archivo catalogo.txt creado correctmente:" + archivoCatalago.getAbsolutePath());
+            if (archivoCatalago.createNewFile()) {
+                System.out.println("Archivo catalogo.txt creado correctmente:" + archivoCatalago.getAbsolutePath());
+            } else {
+                System.out.println("El archivo catálogo.txt no se ha podido crear");
+            }
         } else {
             System.out.println("El archivo catalogo.txt ya existe: " + archivoCatalago.getAbsolutePath());
         };
@@ -52,8 +58,11 @@ public class Fichero7 {
                 System.out.print("El archivo + " + nombreLibro +  "no existe, quiere crearlo?(si/no) ");
                 op = sc.nextLine();
                 if (op.equals("si")) {
-                    archivoLibro.createNewFile();
-                    System.out.println("Libro añadido: " + archivoLibro.getAbsolutePath());
+                    if (archivoLibro.createNewFile()) {
+                        System.out.println("Libro añadido: " + archivoLibro.getAbsolutePath());
+                    } else {
+                        System.out.println("El libro no se ha podido crear");
+                    }
                 } else if (op.equals("no")) {
                     System.out.println("Entendido, no se añadirá el libro");
                 } else {

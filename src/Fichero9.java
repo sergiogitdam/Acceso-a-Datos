@@ -105,7 +105,7 @@ public class Fichero9 {
         String rutaCarpeta = sc.nextLine();
         File ruta = new File(rutaCarpeta);
         if (!ruta.exists()) {
-            if(ruta.mkdir()) {
+            if(ruta.mkdirs()) {
                 System.out.println("Ruta creada correctamente: " + ruta.getAbsolutePath());
             } else {
                 System.out.println("Error al crear la ruta. Asegúrate de que la carpeta padre existe.");
@@ -119,18 +119,23 @@ public class Fichero9 {
         System.out.print("Introduce la ruta completa del archivo que quieres crear: ");
         String rutaArchivo = sc.nextLine();
         File ruta = new File(rutaArchivo);
-        if (!ruta.exists()) {
-            try {
-                if(ruta.createNewFile()) {
-                    System.out.println("Archivo creado correctamente: " + ruta.getAbsolutePath());
-                } else {
-                    System.out.println("Error al crear el archivo.");
-                }
-            } catch (IOException e) {
-                System.out.println("Error de entrada/salida al crear el archivo: " + e.getMessage());
+        File carpetPadreRuta = ruta.getParentFile();
+        if (!carpetPadreRuta.exists()) {
+            if(carpetPadreRuta.mkdirs()) {
+                System.out.println("La ruta no existía pero se ha creado correctamente: " + carpetPadreRuta.getAbsolutePath());
+                System.out.println("Creando el archivo en la nueva ruta");
+            } else {
+                System.out.println("La ruta no se ha podido crear");
             }
         } else {
-            System.out.println("El archivo ya existe");
+            System.out.println("La ruta ya existía, creando el archivo en la ruta");
+        }
+        try {
+            if (ruta.createNewFile()) {
+                System.out.println("Archivo creado: " + ruta.getAbsolutePath());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

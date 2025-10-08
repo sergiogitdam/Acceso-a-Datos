@@ -38,7 +38,7 @@ public class Fichero8 {
             System.out.println("Archivo: " + nombreElemento + " [Peso del archivo: " + pesoArchivoEnBytes + " bytes]");
         } else if (elementoEnArray.isDirectory()) {
             String[] elementos = elementoEnArray.list();
-            System.out.println("Directorio: " + nombreElemento + " [Número de elementos del directorio: " + elementos.length + "]");
+            System.out.println("Directorio: " + nombreElemento + " [Número de elementos del directorio: " + (elementos != null ? elementos.length : 0) + "]");
         }
     }
 

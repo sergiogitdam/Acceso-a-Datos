@@ -189,7 +189,7 @@ public class Ejercicio2 {
     // Método principal: aquí se creará la conexión de la BDD y se probarán los métodos para interactuar con la BDD
     public static void main(String[] args) {
         // Parámetros de conexión a la BD de MySQL
-        String url = "jdbc:mysql://localhost:3306/mi_base_datos";
+        String url = "jdbc:mysql://localhost:3306/AccesoADatosT3E2";
         String usuario = "root";
         String password = "mysqlmysql";
 
